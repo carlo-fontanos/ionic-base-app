@@ -26,13 +26,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Widgets', component: WidgetsPage },
-      { title: 'Ecommerce', component: EcommercePage },
-      { title: 'Mailbox', component: MailboxPage },
-      { title: 'Chat', component: ChatPage },
-      { title: 'Profile', component: ProfilePage }
+      { title: 'Home', component: HomePage, icon_ios: 'stats-outline', icon_md: 'stats' },
+      { title: 'List', component: ListPage, icon_ios: 'list-outline', icon_md: 'list' },
+      { title: 'Widgets', component: WidgetsPage, icon_ios: 'apps-outline', icon_md: 'apps' },
+      { title: 'Ecommerce', component: EcommercePage, icon_ios: 'cart-outline', icon_md: 'cart' },
+      { title: 'Mailbox', component: MailboxPage, icon_ios: 'mail-outline', icon_md: 'mail' },
+      { title: 'Chat', component: ChatPage, icon_ios: 'chatboxes-outline', icon_md: 'chatboxes' },
+      { title: 'Profile', component: ProfilePage, icon_ios: 'person-outline', icon_md: 'person' }
     ];
 
   }

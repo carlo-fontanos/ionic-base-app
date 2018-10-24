@@ -2,14 +2,17 @@
 	<ion-menu [content]="content">
 		<ion-header>
 			<ion-toolbar>
-				<ion-title>Menu</ion-title>
+				<ion-title>Administrator</ion-title>
 			</ion-toolbar>
 		</ion-header>
 
 		<ion-content>
 			<ion-list>
+				<ion-list-header>
+					Navigation
+				</ion-list-header>
 				<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-					{{p.title}}
+					 <ion-icon ios="ios-{{p.icon_ios}}" md="md-{{p.icon_md}}" item-start></ion-icon> {{p.title}}
 				</button>
 			</ion-list>
 		</ion-content>
