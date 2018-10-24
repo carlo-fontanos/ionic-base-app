@@ -1,0 +1,14 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			<span *ngIf="selectedItem">
+				{{selectedItem.subject}}
+			</span>	
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<div *ngIf="selectedItem">
+		You navigated here from <b>{{selectedItem.name}}</b>
+	</div>
+</ion-content>
