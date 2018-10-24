@@ -15,6 +15,8 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+body { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
 
 .split-pane-visible >.split-pane-side{ flex-grow: 15; }
 .split-pane-visible >.split-pane-main{ flex-grow: 85; }
+
