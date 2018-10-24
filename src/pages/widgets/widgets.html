@@ -1,6 +1,11 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar color="primary">
 		<ion-title>Widgets</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="presentPopover()" end>
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
@@ -15,9 +20,8 @@
 						<ion-card-title>
 							Nine Inch Nails Live
 						</ion-card-title>
-						<p>
-							The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-						</p>
+						<p>The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.</p>
+						<p>Nine Inch Nails, commonly abbreviated as NIN, is an American industrial rock band founded in 1988 by Trent Reznor in Cleveland, Ohio..</p>
 					</ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -93,7 +97,27 @@
 			</ion-col>
 			
 			<ion-col col-12 col-sm-6 col-xl-3>
-				
+					<ion-card>
+						<img src="https://ionicframework.com/dist/preview-app/www/assets/img/bjork-live.jpg" />
+						<ion-card-content>
+							<ion-card-title>
+								Björk
+							</ion-card-title>
+							<p>
+								Björk first came to prominence as one of the lead vocalists of the avant pop Icelandic sextet the Sugarcubes, but when...
+							</p>
+						</ion-card-content>
+						<ion-item>
+							<ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
+							Albums
+							<ion-badge item-end>9</ion-badge>
+						</ion-item>
+						<ion-item>
+							<ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
+							Followers
+							<ion-badge item-end>260k</ion-badge>
+						</ion-item>
+					</ion-card>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
