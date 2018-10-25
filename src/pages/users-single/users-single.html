@@ -1,0 +1,15 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			<span *ngIf="selectedItem">
+				{{selectedItem.name.first}} {{user.name.last}
+			</span>	
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<div *ngIf="selectedItem">
+		<h3>{{selectedItem.cell}}</h3>
+		<p>{{selectedItem.email}}</p>
+	</div>
+</ion-content>

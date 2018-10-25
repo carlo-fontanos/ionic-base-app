@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MailboxSinglePage} from '../mailbox-single/mailbox-single';
 
-/**
- * Generated class for the MailboxPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
 	selector: 'page-mailbox',
@@ -37,7 +30,8 @@ export class MailboxPage {
 	];
 	
 	itemTapped(event, email) {
-		this.navCtrl.push(MailboxSinglePage, {
+		this.navCtrl.push('MailboxSinglePage', {
+			id: email.id, 
 			email: email
 		});
 	}
