@@ -11,8 +11,26 @@
 				<ion-list-header>
 					Navigation
 				</ion-list-header>
-				<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-					 <ion-icon ios="ios-{{p.icon_ios}}" md="md-{{p.icon_md}}" item-start></ion-icon> {{p.title}}
+				<button menuClose ion-item (click)="openPage('HomePage')">
+					 <ion-icon ios="ios-stats-outline" md="md-stats" item-start></ion-icon> Home
+				</button>
+				<button menuClose ion-item (click)="openPage('ListPage')">
+					 <ion-icon ios="ios-list-outline" md="md-list" item-start></ion-icon> List
+				</button>
+				<button menuClose ion-item (click)="openPage('WidgetsPage')">
+					 <ion-icon ios="ios-apps-outline" md="md-apps" item-start></ion-icon> Widgets
+				</button>
+				<button menuClose ion-item (click)="openPage('EcommercePage')">
+					 <ion-icon ios="ios-cart-outline" md="md-cart" item-start></ion-icon> Ecommerce
+				</button>
+				<button menuClose ion-item (click)="openPage('MailboxPage')">
+					 <ion-icon ios="ios-mail-outline" md="md-mail" item-start></ion-icon> Mailbox
+				</button>
+				<button menuClose ion-item (click)="openPage('ChatPage')">
+					 <ion-icon ios="ios-chatboxes-outline" md="md-chatboxes" item-start></ion-icon> Chat
+				</button>
+				<button menuClose ion-item (click)="openPage('ProfilePage')">
+					 <ion-icon ios="ios-person-outline" md="md-person" item-start></ion-icon> Profile
 				</button>
 			</ion-list>
 		</ion-content>
