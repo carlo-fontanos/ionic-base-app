@@ -10,16 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-ecommerce',
-  templateUrl: 'ecommerce.html',
+	selector: 'page-ecommerce',
+	templateUrl: 'ecommerce.html',
 })
 export class EcommercePage {
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EcommercePage');
-  }
-
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad EcommercePage');
+	}
 }
