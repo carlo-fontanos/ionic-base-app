@@ -9,11 +9,6 @@
 			<ion-col col-12 col-sm-6 col-xl-3 *ngFor="let user of users">
 				<ion-card>
 					<img src="{{user.picture.large}}">
-					<ion-fab right top>
-						<button ion-fab>
-							<ion-icon ios="ios-chatbubbles" md="md-chatbubbles"></ion-icon>
-						</button>
-					</ion-fab>
 					<ion-item>
 						<ion-icon ios="ios-person" md="md-person" item-start large></ion-icon>
 						<h2 text-capitalize>{{user.name.first}} {{user.name.last}}</h2>
