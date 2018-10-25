@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -9,16 +9,23 @@ import 'rxjs/add/operator/map';
 	templateUrl: 'users.html',
 })
 export class UsersPage {
-	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
 	}
 	
 	users: any;
 	
 	loadJson() {
-		this.http.get('https://randomuser.me/api/?results=30')
+		const loader = this.loadingCtrl.create({
+            content: "Please wait...",
+        });
+
+        loader.present();
+
+        this.http.get('https://randomuser.me/api/?results=30')
 			.map(res => res.json())
 			.subscribe(res => {
 				this.users = res.results;
+                loader.dismiss();
 			}, (err) => {
 				alert("failed loading json data");
 			}
