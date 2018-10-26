@@ -3,6 +3,31 @@
 		<ion-title>Ecommerce</ion-title>
 	</ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-6 col-sm-6 col-xl-2 *ngFor="let product of products" class="p-1 p-xl-2">
+				<ion-card class="m-0 w-100">
+					<a (click)="itemTapped($event, product)">
+						<img src="{{product.mediumImage}}" width="100%">
+					</a>
+					<ion-item>
+						<h2 text-capitalize>{{product.name}}</h2>
+						<p><img src="{{product.customerRatingImage}}" style="width:70px;" class="d-inline-block" /> {{product.customerRating}}</p>
+					</ion-item>
+					<ion-item>
+						<span ion-text color="danger" item-start>${{product.salePrice}}</span>
+						<button ion-button icon-start clear item-end (click)="itemTapped($event, product)">
+							<ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+							View
+						</button>
+					</ion-item>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+        <ion-infinite-scroll-content loadingText="Loading more data..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
