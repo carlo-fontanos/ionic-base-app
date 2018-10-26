@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -12,10 +12,20 @@ import 'rxjs/add/operator/map';
 	templateUrl: 'ecommerce-single.html',
 })
 export class EcommerceSinglePage {
-	item: any;
+	item = [];
+	images = [];
+	@ViewChild(Slides) slides: Slides;
 	
 	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
 		this.item = navParams.get('product');
+	}
+	
+	nextImage() {
+		this.slides.slideNext();
+	}
+
+	prevImage() {
+		this.slides.slidePrev();
 	}
 
 	ionViewDidLoad() {
@@ -25,6 +35,15 @@ export class EcommerceSinglePage {
             .map(res => res.json())
             .subscribe(res => {
 				this.item = res;
+				
+				if(res.imageEntities){
+					for(let image of res.imageEntities) {
+						if(image.largeImage){
+							this.images.push(image.largeImage);
+						}
+					}
+                }
+				
             }, (err) => {
                 alert("failed loading json data");
             }

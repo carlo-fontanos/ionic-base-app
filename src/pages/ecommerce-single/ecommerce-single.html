@@ -1,14 +1,106 @@
 <ion-header>
 	<ion-navbar>
 		<ion-title>
-			<span *ngIf="item">
-				{{item.name}}
-			</span>	
+			<span *ngIf="item">{{item.name}}</span>
 		</ion-title>
 	</ion-navbar>
 </ion-header>
-<ion-content>
-	<div *ngIf="item">
-		You navigated here from <b>{{item.name}}</b>
-	</div>
+<ion-content padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12 col-xl-4 *ngIf="item" class="h-100">
+				<ion-slides pager>
+					<ion-slide *ngFor="let image of images">
+						<img src="{{image}}" />
+					</ion-slide>
+				</ion-slides>
+				<button ion-fab mini (click)="prevImage()" class="position-absolute d-none d-xl-block bg-white text-dark" style="top: 40%; left: 0; z-index: 999"><ion-icon ios="ios-arrow-back" md="md-arrow-back" ></ion-icon></button>
+				<button ion-fab mini float-right (click)="nextImage()" class="position-absolute d-none d-xl-block bg-white text-dark"  style="top: 40%; right: 0; z-index: 999"><ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></button>
+			</ion-col>
+			<ion-col col-12 col-xl-5 *ngIf="item" class="h-100">
+				<h2>{{item.name}}</h2>
+				<p *ngIf="item.customerRatingImage"><img src="{{item.customerRatingImage}}" style="width:75px;" class="d-inline-block" /> {{item.customerRating}}</p>
+				<h1 ion-text color="danger">${{item.salePrice}}</h1>
+				<p [innerHTML]="item.shortDescription"></p>
+				<ion-row>
+					<ion-col col-12 col-xl-6>
+						<button ion-button full>Add to Cart</button>
+					</ion-col>
+					<ion-col col-12 col-xl-6>
+						<button ion-button full color="secondary">Buy Now</button>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+			<ion-col col-12 col-xl-3 class="bg-light" *ngIf="item">
+				<ion-row>
+					<ion-col class="font-weight-bold"># of Reviews</ion-col>
+					<ion-col>{{item.numReviews}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Color</ion-col>
+					<ion-col>{{item.color}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Free Shipping?</ion-col>
+					<ion-col>{{item.freeShipToStore}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Free Shipping over $35?</ion-col>
+					<ion-col>{{item.freeShippingOver35Dollars}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">2 Day Shipping</ion-col>
+					<ion-col>{{item.isTwoDayShippingEligible}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Gender</ion-col>
+					<ion-col>{{item.freeShipToStore}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">ID</ion-col>
+					<ion-col>{{item.itemId}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Offer Type</ion-col>
+					<ion-col>{{item.offerType}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Bundle</ion-col>
+					<ion-col>{{item.bundle}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Category Path</ion-col>
+					<ion-col>{{item.categoryPath}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Clearance</ion-col>
+					<ion-col>{{item.clearance}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Pre Order</ion-col>
+					<ion-col>{{item.preOrder}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Size</ion-col>
+					<ion-col>{{item.size}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Standard Ship Rate</ion-col>
+					<ion-col>{{item.standardShipRate}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">On Stock</ion-col>
+					<ion-col>{{item.stock}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">UPC</ion-col>
+					<ion-col>{{item.upc}}</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="font-weight-bold">Variants</ion-col>
+					<ion-col>{{item.variants}}</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>
