@@ -6,16 +6,16 @@
 <ion-content>
 	<ion-grid>
 		<ion-row>
-			<ion-col col-12 col-sm-6 col-xl-3 *ngFor="let user of users">
-				<ion-card>
-					<img src="{{user.picture.large}}">
+			<ion-col col-6 col-sm-6 col-xl-2 *ngFor="let user of users" class="p-1 p-xl-2">
+				<div class="shadow-sm">
+					<a (click)="itemTapped($event, user)">
+						<img src="{{user.picture.large}}" width="100%">
+					</a>
 					<ion-item>
-						<ion-icon ios="ios-person" md="md-person" item-start large></ion-icon>
 						<h2 text-capitalize>{{user.name.first}} {{user.name.last}}</h2>
 						<p>{{user.email}}</p>
 					</ion-item>
 					<ion-item>
-						<ion-icon ios="ios-call" md="md-call" item-start large></ion-icon>
 						<h2>Phone</h2>
 						<p>{{user.cell}}</p>
 					</ion-item>
@@ -27,12 +27,12 @@
 							View
 						</button>
 					</ion-item>
-				</ion-card>
+				</div>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
 
     <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        <ion-infinite-scroll-content loadingText="Loading more data..."></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>

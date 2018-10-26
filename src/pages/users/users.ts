@@ -28,16 +28,15 @@ export class UsersPage {
                 alert("failed loading json data");
             }
         );
-        return true;
     }
 
     doInfinite(): Promise<any> {
-        console.log('Begin async operation');
-
         return new Promise((resolve) => {
-            if(this.loadJson()){
-                resolve();
-            }
+            /* setTimeout prevents multiple ajax calls */
+			setTimeout(() => {
+				this.loadJson()
+				resolve();
+			}, 300);
         })
     }
     
