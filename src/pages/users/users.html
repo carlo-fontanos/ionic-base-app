@@ -7,7 +7,7 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col col-6 col-sm-6 col-xl-2 *ngFor="let user of users" class="p-1 p-xl-2">
-				<div class="shadow-sm">
+				<ion-card class="m-0 w-100">
 					<a (click)="itemTapped($event, user)">
 						<img src="{{user.picture.large}}" width="100%">
 					</a>
@@ -27,7 +27,7 @@
 							View
 						</button>
 					</ion-item>
-				</div>
+				</ion-card>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
