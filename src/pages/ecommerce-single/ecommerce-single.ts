@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 export class EcommerceSinglePage {
 	item = [];
 	images = [];
+    variants = [];
 	@ViewChild(Slides) slides: Slides;
 	
 	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
@@ -43,11 +44,42 @@ export class EcommerceSinglePage {
 						}
 					}
                 }
+
+                if(res.variants){
+                    let i = 1;
+                    for(let variant_id of res.variants) {
+                        setTimeout(() => {
+                            this.addVariant(variant_id);
+                        }, (i / 2) * 800 );
+                        i++;
+                    }
+                }
 				
             }, (err) => {
                 alert("failed loading json data");
             }
         );
+        console.log(this.variants);
 	}
+
+    addVariant(id) {
+        this.http.get('http://carlofontanos.com/demo/walmart-api.php?id=' +  id + '&type=id')
+            .map(res => res.json())
+            .subscribe(res => {
+                if(!res.errors){
+                    this.variants.push(res);
+                }
+                
+            }, (err) => {
+                console.log('failed loading variant ID' + id);
+            }
+        );
+    }
+
+    itemTapped(event, product) {
+        this.navCtrl.push('EcommerceSinglePage', {
+            id: product.itemId
+        });
+    }
 
 }

@@ -11,7 +11,7 @@
 <ion-content padding>
 	<ion-grid>
 		<ion-row>
-			<ion-col col-12 col-xl-6 *ngIf="item" class="h-100">
+			<ion-col col-12 col-xl-7 *ngIf="item" class="h-100">
 				<ion-slides pager>
 					<ion-slide *ngFor="let image of images">
 						<img src="{{image}}" />
@@ -20,8 +20,9 @@
 				<button ion-fab mini (click)="prevImage()" class="position-absolute d-none d-xl-block bg-white text-dark" style="top: 40%; left: 0; z-index: 999"><ion-icon ios="ios-arrow-back" md="md-arrow-back" ></ion-icon></button>
 				<button ion-fab mini float-right (click)="nextImage()" class="position-absolute d-none d-xl-block bg-white text-dark"  style="top: 40%; right: 0; z-index: 999"><ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></button>
 			</ion-col>
-			<ion-col col-12 col-xl-6 *ngIf="item" class="h-100">
+			<ion-col col-12 col-xl-5 *ngIf="item" class="h-100">
 				<h2>{{item.name}}</h2>
+                <p class="text-secondary">SKU: {{item.modelNumber}}</p>
 				<p *ngIf="item.customerRatingImage"><img src="{{item.customerRatingImage}}" style="width:75px;" class="d-inline-block" /> {{item.customerRating}}</p>
 				<h1 ion-text color="danger">${{item.salePrice}}</h1>
 				<p [innerHTML]="item.shortDescription"></p>
@@ -36,8 +37,19 @@
 			</ion-col>
 		</ion-row>
 		<div *ngIf="item">
-			<div [innerHTML]="item.longDescription"></div>
-			<ion-row>
+            <ion-row class="mt-5">
+                <ion-col col-12 col-xl-6>
+                    <h3>Product Info</h3>
+        			<div [innerHTML]="item.longDescription"></div>
+                </ion-col>
+                <ion-col col-12 col-xl-6>
+                    <h3>Return and Refund Policy</h3>
+                    <p>I’m a Return and Refund policy. I’m a great place to let your customers know what to do in case they are dissatisfied with their purchase. Having a straightforward refund or exchange policy is a great way to build trust and reassure your customers that they can buy with confidence.</p>
+		        </ion-col>
+            </ion-row>
+
+            <h3>Other Info</h3>
+            <ion-row>
 				<ion-col class="font-weight-bold"># of Reviews</ion-col>
 				<ion-col>{{item.numReviews}}</ion-col>
 			</ion-row>
@@ -102,13 +114,31 @@
 				<ion-col>{{item.upc}}</ion-col>
 			</ion-row>
 			<ion-row>
-				<ion-col class="font-weight-bold">Variants</ion-col>
-				<ion-col>{{item.variants}}</ion-col>
-			</ion-row>
-			<ion-row>
 				<ion-col class="font-weight-bold">Brand</ion-col>
 				<ion-col>{{item.brandName}}</ion-col>
 			</ion-row>
+
+            <h3>You might also like</h3>
+            <ion-row>
+                <ion-col col-6 col-sm-6 col-xl-2 *ngFor="let variant of variants" class="p-1 p-xl-2">
+                    <ion-card class="m-0 w-100">
+                        <a (click)="itemTapped($event, variant)">
+                            <img src="{{variant.mediumImage}}" width="100%">
+                        </a>
+                        <ion-item>
+                            <h2 text-capitalize>{{variant.name}}</h2>
+                            <p><img src="{{variant.customerRatingImage}}" style="width:70px;" class="d-inline-block" /> {{variant.customerRating}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <span ion-text color="danger" item-start>${{variant.salePrice}}</span>
+                            <button ion-button icon-start clear item-end (click)="itemTapped($event, variant)">
+                                <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                                View
+                            </button>
+                        </ion-item>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
 		</div>
 	</ion-grid>
 </ion-content>
