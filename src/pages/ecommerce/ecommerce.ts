@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -14,11 +14,16 @@ export class EcommercePage {
     limit = 20;
     products = [];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
     }
     
     loadJson() {
-		let offset = this.lastItem == 0 ? 1 : this.lastItem + this.limit /* Start offset with 1 on first load */
+		const loader = this.loadingCtrl.create({
+            content: "Please wait..."
+        });
+        loader.present();
+
+        let offset = this.lastItem == 0 ? 1 : this.lastItem + this.limit /* Start offset with 1 on first load */
 		
         this.http.get('http://carlofontanos.com/demo/walmart-api.php?query=shoes&limit=' +  this.limit + '&offset=' + offset + '&sort=relevance&type=search')
             .map(res => res.json())
@@ -28,6 +33,8 @@ export class EcommercePage {
                 }
 				
 				this.lastItem = this.lastItem + this.limit; /* Set new last item count */
+
+                loader.dismiss();
             }, (err) => {
                 alert("failed loading json data");
             }

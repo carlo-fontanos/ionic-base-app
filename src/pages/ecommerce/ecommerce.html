@@ -1,5 +1,8 @@
 <ion-header>
 	<ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
 		<ion-title>Ecommerce</ion-title>
 	</ion-navbar>
 </ion-header>
@@ -28,6 +31,6 @@
 	</ion-grid>
 
     <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
-        <ion-infinite-scroll-content loadingText="Loading more data..."></ion-infinite-scroll-content>
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>

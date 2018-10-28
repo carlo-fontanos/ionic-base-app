@@ -1,14 +1,17 @@
 <ion-split-pane>	
 	<ion-menu [content]="content">
-		<ion-header>
-			<ion-toolbar>
-				<ion-title>Administrator</ion-title>
-			</ion-toolbar>
-		</ion-header>
-
 		<ion-content>
+            <div class="sidenav-header position-relative">
+                <div class="position-absolute text-white" [ngStyle]="{bottom: '20px', left: '15px'}">
+                    <a href="#/home">
+                        <img src="http://carlofontanos.com/wp-content/themes/carlo-fontanos/img/carlofontanos.jpg" width="60" class="rounded-circle shadow">
+                    </a>
+                    <h5 class="mt-3 mb-2 text-white">Carl Victor Fontanos</h5>
+                    <p class="m-0">Full Stack Developer</p>
+                </div>
+            </div>
 			<ion-list>
-				<ion-list-header>
+				<ion-list-header class="m-0">
 					Navigation
 				</ion-list-header>
 				<button menuClose ion-item (click)="openPage('HomePage')">
