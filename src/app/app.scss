@@ -23,4 +23,5 @@ body { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text;
 .split-pane-visible >.split-pane-side{ flex-grow: 15; }
 .split-pane-visible >.split-pane-main{ flex-grow: 85; }
 
+.sidenav .scroll-content { overflow-y: auto; }
 .sidenav-header { background: url('https://cdn-images-1.medium.com/max/2000/1*l3wujEgEKOecwVzf_dqVrQ.jpeg') no-repeat; background-size: cover; min-height: 170px; font-weight: bold; }
