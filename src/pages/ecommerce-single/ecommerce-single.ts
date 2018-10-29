@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 	templateUrl: 'ecommerce-single.html',
 })
 export class EcommerceSinglePage {
+	api_url = 'http://carlofontanos.com/demo/walmart-api.php';
 	item = [];
 	images = [];
     variants = [];
@@ -36,7 +37,7 @@ export class EcommerceSinglePage {
         });
         loader.present();
 		
-		this.http.get('http://carlofontanos.com/demo/walmart-api.php?id=' +  id + '&type=id')
+		this.http.get(this.api_url + '?id=' +  id + '&type=id')
             .map(res => res.json())
             .subscribe(res => {
 				this.item = res;
@@ -69,7 +70,7 @@ export class EcommerceSinglePage {
 	}
 
     addVariant(id) {
-        this.http.get('http://carlofontanos.com/demo/walmart-api.php?id=' +  id + '&type=id')
+        this.http.get(this.api_url + '?id=' +  id + '&type=id')
             .map(res => res.json())
             .subscribe(res => {
                 if(!res.errors){
