@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -17,7 +17,7 @@ export class EcommerceSinglePage {
     variants = [];
 	@ViewChild(Slides) slides: Slides;
 	
-	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
 		this.item = navParams.get('product');
 	}
 	
@@ -31,6 +31,10 @@ export class EcommerceSinglePage {
 
 	ionViewDidLoad() {
 		let id = this.navParams.get('id');
+		const loader = this.loadingCtrl.create({
+            content: "Please wait..."
+        });
+        loader.present();
 		
 		this.http.get('http://carlofontanos.com/demo/walmart-api.php?id=' +  id + '&type=id')
             .map(res => res.json())
@@ -54,6 +58,8 @@ export class EcommerceSinglePage {
                         i++;
                     }
                 }
+				
+				loader.dismiss();
 				
             }, (err) => {
                 alert("failed loading json data");

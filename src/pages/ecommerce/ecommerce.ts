@@ -25,7 +25,7 @@ export class EcommercePage {
 
         let offset = this.lastItem == 0 ? 1 : this.lastItem + this.limit /* Start offset with 1 on first load */
 		
-        this.http.get('http://carlofontanos.com/demo/walmart-api.php?query=shoes&limit=' +  this.limit + '&offset=' + offset + '&sort=relevance&type=search')
+        this.http.get('http://carlofontanos.com/demo/walmart-api.php?query=bags&limit=' +  this.limit + '&offset=' + offset + '&sort=relevance&type=search')
             .map(res => res.json())
             .subscribe(res => {
                 for(let data of res.items) {
