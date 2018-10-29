@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Contacts</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only class="mr-3">
+				<ion-icon name="search"></ion-icon>
+			</button>
+			<button ion-button icon-only class="mr-3">
+				<ion-icon name="person-add"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-list>
+		<ion-item *ngFor="let contact of contacts">
+			<ion-avatar item-start>
+				<img src="{{contact.picture.large}}" width="100%">
+			</ion-avatar>
+				<h2 text-capitalize>{{contact.name.first}} {{contact.name.last}}</h2>
+				<p>{{contact.cell}}</p>
+			<button ion-button clear item-end><ion-icon ios="ios-call" md="md-call" [ngStyle]="{fontSize: '25px'}"></ion-icon></button>
+		</ion-item>
+	</ion-list>
+	<ion-fab bottom right>
+		<button ion-fab><ion-icon ios="ios-keypad" md="md-keypad"></ion-icon></button>
+	</ion-fab>
+</ion-content>

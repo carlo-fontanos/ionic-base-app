@@ -1,11 +1,6 @@
-<ion-header>
-	<ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-		<ion-title>Chat</ion-title>
-	</ion-navbar>
-</ion-header>
-<ion-content padding>
-
-</ion-content>
+<ion-tabs selectedIndex="1" color="primary" tabsPlacement="top">
+    <ion-tab [root]="contactsRoot" tabTitle="" tabIcon="md-contacts"></ion-tab>
+    <ion-tab [root]="messagesRoot" tabTitle="" tabIcon="md-chatbubbles"></ion-tab>
+    <ion-tab [root]="callsRoot" tabTitle="" tabIcon="md-call"></ion-tab>
+    <ion-tab [root]="settingsRoot" tabTitle="" tabIcon="md-settings"></ion-tab>
+</ion-tabs>
