@@ -26,7 +26,7 @@
 					<p class="text-secondary">SKU: {{item.modelNumber}}</p>
 					<p *ngIf="item.customerRatingImage"><img src="{{item.customerRatingImage}}" style="width:75px;" class="d-inline-block" /> {{item.customerRating}}</p>
 					<h1 ion-text color="danger">${{item.salePrice}}</h1>
-					<p [innerHTML]="item.shortDescription"></p>
+					<div [innerHTML]="escapeHtml(item.shortDescription)"></div>
 					<ion-row>
 						<ion-col col-12 col-xl-6>
 							<button ion-button full>Add to Cart</button>
@@ -43,7 +43,7 @@
 					<strong>Product Info</strong>
 				</ion-card-header>
 				<ion-card-content>
-					<div [innerHTML]="item.longDescription"></div>
+					<div [innerHTML]="escapeHtml(item.longDescription)"></div>
 				</ion-card-content>
 			</ion-card>
 			<ion-card>
