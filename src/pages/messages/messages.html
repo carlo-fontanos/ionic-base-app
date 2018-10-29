@@ -10,6 +10,7 @@
 </ion-header>
 <ion-content>
 	<ion-list>
+        <ion-list-header>Messages</ion-list-header>
 		<button ion-item *ngFor="let message of messages; index as i">
 			<ion-avatar item-start>
 				<img src="{{message.picture.large}}" width="100%">
