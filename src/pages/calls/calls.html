@@ -3,6 +3,61 @@
 		<ion-title>Calls</ion-title>
 	</ion-navbar>
 </ion-header>
-<ion-content padding>
-
+<ion-content>
+	<div padding>
+	    <ion-segment [(ngModel)]="calls" mode="ios">
+	        <ion-segment-button value="all">
+	            All Calls
+	        </ion-segment-button>
+	        <ion-segment-button value="missed">
+	            Missed
+	        </ion-segment-button>
+			<ion-segment-button value="voicemail">
+	            Voicemail
+	        </ion-segment-button>
+	    </ion-segment>
+	</div>
+	
+	<div [ngSwitch]="calls">
+	    <ion-list *ngSwitchCase="'all'">
+			<button ion-item *ngFor="let all of callsArray">
+				<ion-avatar item-start>
+					<img src="https://randomuser.me/api/portraits/men/{{all.avatar}}.jpg" />
+				</ion-avatar>
+				<h2 text-capitalize>{{all.number}}</h2>
+				<p *ngIf="all.missed" ion-text color="danger"><strong>Missed</strong></p>
+				<p *ngIf="!all.missed" ion-text color="secondary"><strong>Outgoing Call</strong></p>
+				<p>{{all.time}} | {{all.location}}</p>
+			</button>
+	    </ion-list>
+	
+	    <ion-list *ngSwitchCase="'missed'">
+			<ng-container *ngFor="let missed of callsArray">
+				<button ion-item *ngIf="missed.missed">
+					<ion-avatar item-start>
+						<img src="https://randomuser.me/api/portraits/men/{{missed.avatar}}.jpg" />
+					</ion-avatar>
+					<h2 text-capitalize>{{missed.number}}</h2>
+					<p ion-text color="danger"><strong>Missed</strong></p>
+					<p>{{missed.time}} | {{missed.location}}</p>
+				</button>
+			</ng-container>
+	    </ion-list>
+		
+		<ion-list *ngSwitchCase="'voicemail'">
+			<ng-container *ngFor="let voicemail of callsArray">
+				<button ion-item *ngIf="voicemail.voicemail">
+	 			   <ion-avatar item-start>
+	 				   <img src="https://randomuser.me/api/portraits/men/{{voicemail.avatar}}.jpg" />
+	 			   </ion-avatar>
+				   <h2 text-capitalize>{{voicemail.number}}</h2>
+				   <p ion-text color="secondary"><strong>Outgoing Call</strong></p>
+				   <p>{{voicemail.time}} | {{voicemail.location}}</p>
+	 		   </button>
+		   </ng-container>
+	   </ion-list>
+	</div>
+	<ion-fab bottom right>
+		<button ion-fab><ion-icon ios="ios-keypad" md="md-keypad"></ion-icon></button>
+	</ion-fab>
 </ion-content>
