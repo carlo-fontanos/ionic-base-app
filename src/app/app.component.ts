@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HelpersProvider } from '../providers/helpers/helpers';
 
 @Component({
 	templateUrl: 'app.html'
@@ -10,9 +11,51 @@ export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
 	rootPage: any = 'HomePage'; /* Lazy loading: load all pages as string */
+	dropdownList: any[];
 
-	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public helpers: HelpersProvider) {
 		this.initializeApp();
+		this.dropdownList = [
+			{
+			    "name": "Dropdown",
+			    "children": [
+			        {
+			            "name": "Links",
+			            "children": [
+	                        {
+	                            "name": "Link 1",
+								"path": "/"
+	                        },
+	                        {
+	                            "name": "Link 2",
+								"path": "/"
+	                        },
+	                        {
+	                            "name": "Link 3",
+								"path": "/"
+	                        }
+			            ]
+			        },
+			        {
+			            "name": "List",
+			            "children": [
+			                {
+			                    "name": "Pizza Salami",
+			                    "description": "Pork chop jowl capicola porchetta, kielbasa prosciutto boudin bacon pork pig.",
+			                    "price": "$10",
+								"path": "/"
+			                },
+			                {
+			                    "name": "Pizza Prosciutto",
+			                    "description": "Pork chop pastrami landjaeger chuck brisket",
+			                    "price": "$12",
+								"path": "/"
+			                }
+			            ]
+			        }
+			    ]
+			}
+		]
 	}
 
 	initializeApp() {

@@ -10,7 +10,7 @@
                     <p class="m-0">Full Stack Developer</p>
                 </div>
             </div>
-			<ion-list class="list-sm">
+			<ion-list>
 				<ion-list-header class="m-0">
 					Navigation
 				</ion-list-header>
@@ -38,6 +38,38 @@
 				<button menuClose ion-item (click)="openPage('UsersPage')">
 					 <ion-icon ios="ios-people-outline" md="md-people" item-start></ion-icon> Users
 				</button>
+				
+				<ng-container *ngFor="let item of dropdownList; let i = index">
+					<!-- Toggle Button -->
+			        <button ion-item (click)="helpers.toggleSection(dropdownList, i)" [ngClass]="{'accordion-section-active': item.open, 'accordion-section': !item.open}">
+			            <ion-icon item-left name="ios-arrow-forward" *ngIf="!item.open"></ion-icon>
+			            <ion-icon item-left name="ios-arrow-down" *ngIf="item.open"></ion-icon>
+			            {{ item.name }}
+			        </button>
+					
+					<ion-list *ngIf="item.children && item.open" no-margin>
+			            <!-- Second Level -->
+			            <ng-container *ngFor="let child of item.children; let j = index">
+			                <!-- Toggle Button -->
+			                <button ion-item (click)="helpers.toggleItem(dropdownList, i, j)" *ngIf="child.children" class="accordion-child">
+			                    <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
+			                    <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
+			                    {{ child.name }}
+			                </button>
+		               		
+			                <ion-list *ngIf="child.children && child.open" no-margin>
+			                    <!-- Third Level -->
+			                    <button ion-item *ngFor="let item of child.children; let k = index" class="child-item">
+			                        <h2>{{ item.name }}</h2>
+			                        <p text-lowercase>{{ item.description }}</p>
+									<span *ngIf="item.price" ion-button outline item-end (click)="buyItem(item)">{{ item.price }}</span>
+			                    </button>
+			                </ion-list>
+
+			            </ng-container>
+			        </ion-list>
+				</ng-container>
+				
 			</ion-list>
 		</ion-content>
 	</ion-menu>

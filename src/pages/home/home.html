@@ -7,12 +7,51 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-	<h3>Ionic Menu Starter</h3>
+<ion-content>
+	<ion-list>
+		<button ion-item>
+			 <ion-icon ios="ios-stats-outline" md="md-stats" item-start></ion-icon> Home
+		</button>
+		
+		<!-- First Level -->
+	    <ng-container *ngFor="let item of information; let i = index">
+			<!-- Toggle Button -->
+	        <button ion-item (click)="helpers.toggleSection(information, i)" [ngClass]="{'accordion-section-active': item.open, 'accordion-section': !item.open}">
+	            <ion-icon item-left name="ios-arrow-forward" *ngIf="!item.open"></ion-icon>
+	            <ion-icon item-left name="ios-arrow-down" *ngIf="item.open"></ion-icon>
+	            {{ item.name }}
+	        </button>
 
-	<p>
-		If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-	</p>
+	        <ion-list *ngIf="item.children && item.open" no-margin>
+	            <!-- Second Level -->
+	            <ng-container *ngFor="let child of item.children; let j = index">
+	                <!-- Toggle Button -->
+	                <button ion-item (click)="helpers.toggleItem(information, i, j)" *ngIf="child.children" class="accordion-child">
+	                    <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
+	                    <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
+	                    {{ child.name }}
+	                </button>
 
-	<button ion-button secondary menuToggle>Toggle Menu</button>
+	                <!-- Direct Add Button as Fallback -->
+	                <ion-item *ngIf="!child.children" ion-item class="accordion-child-item">
+	                    <h2>{{ child.name }}</h2>
+	                    <p text-lowercase>{{ child.information }}</p>
+	                    <button ion-button outline item-end (click)="buyItem(child)">{{ child.price }}</button>
+	                </ion-item>
+
+	                <ion-list *ngIf="child.children && child.open" no-margin>
+	                    <!-- Third Level -->
+	                    <ion-item *ngFor="let item of child.children; let k = index" class="child-item">
+	                        <h2>{{ item.name }}</h2>
+	                        <p text-lowercase>{{ item.information }}</p>
+	                        <!-- Direct Add Button -->
+	                        <button ion-button outline item-end (click)="buyItem(item)">{{ item.price }}</button>
+	                    </ion-item>
+	                </ion-list>
+
+	            </ng-container>
+	        </ion-list>
+
+	    </ng-container>
+	</ion-list>
 </ion-content>
