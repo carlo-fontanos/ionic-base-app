@@ -7,6 +7,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 	templateUrl: 'calls.html',
 })
 export class CallsPage {
+	calls: string;
+	
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 	}
 	
