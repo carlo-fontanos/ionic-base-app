@@ -13,10 +13,10 @@
         <ion-list-header>Messages</ion-list-header>
 		<button ion-item *ngFor="let message of messages; index as i">
 			<ion-avatar item-start>
-				<img src="{{message.picture.large}}" width="100%">
+				<img src="https://randomuser.me/api/portraits/men/{{message.avatar}}.jpg" />
 			</ion-avatar>
-			<h2 text-capitalize>{{message.name.first}} {{message.name.last}}</h2>
-			<p>{{message.location.city}}</p>
+			<h2 text-capitalize>{{message.name}}</h2>
+			<p>{{message.location}}</p>
 			<p clear item-end>{{2 + i}} hours</p>
 		</button>
 	</ion-list>

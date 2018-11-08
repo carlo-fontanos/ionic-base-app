@@ -16,10 +16,10 @@
         <ion-list-header>Contacts</ion-list-header>
 		<ion-item *ngFor="let contact of contacts">
 			<ion-avatar item-start>
-				<img src="{{contact.picture.large}}" width="100%">
+				<img src="https://randomuser.me/api/portraits/men/{{contact.avatar}}.jpg" />
 			</ion-avatar>
-				<h2 text-capitalize>{{contact.name.first}} {{contact.name.last}}</h2>
-				<p>{{contact.cell}}</p>
+				<h2 text-capitalize>{{contact.name}}</h2>
+				<p>{{contact.number}}</p>
 			<button ion-button clear item-end><ion-icon ios="ios-call" md="md-call" [ngStyle]="{fontSize: '25px'}"></ion-icon></button>
 		</ion-item>
 	</ion-list>

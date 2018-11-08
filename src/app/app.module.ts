@@ -28,7 +28,7 @@ import { HelpersProvider } from '../providers/helpers/helpers';
 		StatusBar,
 		SplashScreen,
 		{provide: ErrorHandler, useClass: IonicErrorHandler},
-    HelpersProvider
+    	HelpersProvider
 	]
 })
 export class AppModule {}
