@@ -10,7 +10,7 @@
                     <p class="m-0">Full Stack Developer</p>
                 </div>
             </div>
-			<ion-list>
+			<ion-list no-lines>
 				<ion-list-header class="m-0">
 					Navigation
 				</ion-list-header>
@@ -26,11 +26,15 @@
 				<button menuClose ion-item (click)="openPage('EcommercePage')">
 					 <ion-icon ios="ios-cart-outline" md="md-cart" item-start></ion-icon> Ecommerce
 				</button>
+				<hr />
 				<button menuClose ion-item (click)="openPage('MailboxPage')">
 					 <ion-icon ios="ios-mail-outline" md="md-mail" item-start></ion-icon> Mailbox
 				</button>
 				<button menuClose ion-item (click)="openPage('ChatPage')">
 					 <ion-icon ios="ios-chatboxes-outline" md="md-chatboxes" item-start></ion-icon> Chat
+				</button>
+				<button menuClose ion-item (click)="openPage('RecentContacts')">
+					 <ion-icon ios="ios-contacts" md="md-contacts" item-start></ion-icon> Recent Contacts
 				</button>
 				<button menuClose ion-item (click)="openPage('ProfilePage')">
 					 <ion-icon ios="ios-person-outline" md="md-person" item-start></ion-icon> Profile
