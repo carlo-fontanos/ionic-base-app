@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Recent Contacts</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="p-0">
+		<ion-row>
+			<ion-col col-3 col-xl-4 class="px-0 border-right">
+                <ion-list no-lines>
+                    <button ion-item *ngFor="let contact of contacts" [ngClass]="{'border-top' : contact.break}" (click)="loadContact($event, contact)">
+                        <ion-avatar item-start>
+                            <img src="https://randomuser.me/api/portraits/men/{{contact.avatar}}.jpg" />
+                        </ion-avatar>
+                        <h2 text-capitalize>{{contact.name}}</h2>
+                        <ion-badge clear item-end *ngIf="contact.break">{{contact.date}}</ion-badge>
+                    </button>
+                </ion-list>
+            </ion-col>
+            <ion-col col-9 col-xl-8 class="p-0">
+                <div *ngIf="singleContact">
+                    <div class="position-relative" [ngStyle]="{height: '230px', 'background-image': 'url(https://picsum.photos/1200/400/?image=3' + singleContact.id + '&gravity=center)'}">
+                        <div class="position-absolute" [ngStyle]="{bottom: '15px', 'left': '15px'}">
+                            <img src="https://randomuser.me/api/portraits/men/{{singleContact.avatar}}.jpg" class="rounded border" />
+                            <h1 class="text-white m-0">{{singleContact.name}}</h1>
+                        </div>
+                    </div>
+                    <ion-list>
+                        <ion-list-header class="my-0">
+                            About
+                        </ion-list-header>
+                        <ion-item>
+                            <h2>Name</h2>
+                            <p>{{singleContact.name}}</p>
+                            <button ion-button outline item-end>Edit</button>
+                        </ion-item>
+                        <ion-item>
+                            <h2>Phone Number</h2>
+                            <p>{{singleContact.number}}</p>
+                            <button ion-button outline item-end>Edit</button>
+                        </ion-item>
+                        <ion-item>
+                            <h2>Location</h2>
+                            <p>{{singleContact.location}}</p>
+                            <button ion-button outline item-end>Edit</button>
+                        </ion-item>
+                        <ion-item>
+                            <h2>Gender</h2>
+                            <p>Male</p>
+                            <button ion-button outline item-end>Edit</button>
+                        </ion-item>
+                        <ion-item>
+                            <h2>Registered Since</h2>
+                            <p>{{singleContact.time}}</p>
+                            <button ion-button outline item-end>Edit</button>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
