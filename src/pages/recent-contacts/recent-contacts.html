@@ -9,7 +9,7 @@
 <ion-content>
     <ion-grid class="p-0">
 		<ion-row>
-			<ion-col col-3 col-xl-4 class="px-0 border-right">
+			<ion-col col-3 col-xl-4 class="px-0 border-right" [ngStyle]="{'height': 'calc(100vh - 56px)', 'overflow-y': 'auto'}">
                 <ion-list no-lines>
                     <button ion-item *ngFor="let contact of contacts" [ngClass]="{'border-top' : contact.break}" (click)="loadContact($event, contact)">
                         <ion-avatar item-start>
