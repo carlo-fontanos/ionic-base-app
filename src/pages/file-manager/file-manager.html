@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <div>
+            <button ion-button menuToggle float-left>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <button icon-only ion-button clear float-right>
+                <ion-icon ios="ios-information-circle" md="md-information-circle" class="text-light"></ion-icon>
+            </button>
+            <button icon-only ion-button clear float-right>
+                <ion-icon ios="ios-search" md="md-search" class="text-light"></ion-icon>
+            </button>
+            <button icon-only ion-button clear float-right>
+                <ion-icon ios="ios-apps" md="md-apps" class="text-light"></ion-icon>
+            </button>
+        </div>
+        <div class="my-5 d-block">&nbsp;</div>
+        <div class="text-light pb-5" [ngStyle]="{'font-size': '20px', 'padding-left': '80px'}">
+            My Files <ion-icon name="ios-arrow-forward" class="align-middle mx-3"></ion-icon> 
+            Photos <ion-icon name="ios-arrow-forward" class="align-middle mx-3"></ion-icon> 
+            Beach
+        </div>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-fab edge left top>
+        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>
